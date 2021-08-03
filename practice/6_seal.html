@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    "use strict";
+    //新建员工类型: 
+    //    Employee员工
+    class Emp {
+      constructor(eid, ename, salary) { //妈妈
+        this.eid = eid;//只读
+        this.ename = ename;//禁止删除
+        this.salary = salary;//禁止for in遍历
+        Object.defineProperties(this, {
+          //哪些属性: 
+          eid: { writable: false },
+          salary: { enumerable: false }
+        })
+        //凡是这个妈妈生的孩子，天生就是密封的！
+        Object.seal(this);
+      }
+    }
+    //新建两个员工: 
+    var lilei = new Emp(1001, "Li Lei", 12000);
+    var hmm = new Emp(1002, "Han Meimei", 13000);
+
+    for (var key in lilei) {
+      console.log(`属性名: ${key}, 属性值:${lilei[key]}`)
+    }//虽然可以遍历，但是没有salary
+    console.log(lilei);
+  </script>
+</body>
+
+</html>

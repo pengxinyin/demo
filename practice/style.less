@@ -1,0 +1,24 @@
+.list {
+    width: 600px;
+
+    li {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        line-height: 30px;
+        border-bottom: 1px dashed #ccc;
+
+        span {
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        &:hover {
+            /* //&代表父元素,在这里指的是li */
+            background-color: #ccc;
+        }
+    }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //创建学生类型，包括2部分
+    class Student{
+      //className="初一2班" //自有属性
+      //1. 构造函数: 规定所有学生必须有sname和sage两个属性
+      constructor(sname,sage){
+        this.sname=sname;
+        this.sage=sage;
+        //如果当前类型的原型对象中不包含指定的共有属性
+        if(Student.prototype.className===undefined){
+          //就自动向原型对象中添加共有属性
+          Student.prototype.className="初一2班"
+        }
+      }
+      //2. 原型对象: 规定所有学生都会做自我介绍!
+      intr(){
+        console.log(`I'm ${this.sname}, I'm ${this.sage}`)
+      }
+    }
+    //Student.prototype.className="初一2班"
+
+    //创建两个学生: 
+    var lilei=new Student("Li Lei",11);
+    var hmm=new Student("Han Meimei",12);
+    console.log(lilei);
+    console.log(hmm);
+    //过了一年，两人共同升了一级
+    Student.prototype.className="初二2班"
+    console.log(lilei.className, hmm.className);
+  </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    "use strict";
+    //新建员工类型: 
+    //    Employee员工
+    class Emp {
+      constructor(eid, ename, salary) { //妈妈
+        this.eid = eid;//只读
+        this.ename = ename;//禁止删除
+        this.salary = salary;//禁止for in遍历
+        //当程序执行到这里时，正在创建子对象过程中
+        //如果在正在创建子对象过程中，想获得正在创建的子对象，保护正在创建的子对象
+        //                      传值！
+        //                       ↓
+        Object.defineProperties(this, {
+          //哪些属性: 
+          eid: {
+            writable: false,
+            configurable: false
+          },
+          ename: {
+            configurable: false
+          },
+          salary: {
+            enumerable: false,
+            configurable: false
+          }
+        })
+      }
+    }
+    //新建两个员工: 
+    var lilei = new Emp(1001, "Li Lei", 12000);
+    var hmm = new Emp(1002, "Han Meimei", 13000);
+    //尝试遍历所有属性(包括salary)
+    for (var key in lilei) {
+      console.log(`属性名: ${key}, 属性值:${lilei[key]}`)
+    }//虽然可以遍历，但是没有salary
+    console.log(lilei);
+  </script>
+</body>
+
+</html>

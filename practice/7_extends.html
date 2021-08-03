@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    class Flyer {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+      }
+      fly() {
+        console.log(`飞到 x=${this.x},y=${this.y} 位置`)
+      }
+    }
+
+    class Plane extends Flyer {
+      constructor(x, y, score) {
+        //必须调用super()来请父类型构造函数帮忙补齐子类型缺少的属性
+        super(x, y);
+        this.score = score;
+      }
+      getScore() {
+        console.log(`击落一架敌机，得${this.score}分`)
+      }
+    }
+    //创建一个敌机对象: 
+    //               x  y   score
+    var p1 = new Plane(50, 100, 5);
+    console.log(p1);
+    //{ x:50, y:100, score:5 }
+    //  _ _proto_ _:{ 
+    //    fly(), 
+    //    getScore() 
+    //}
+    p1.fly();//飞到x=50,y=100的位置
+    p1.getScore();//击落一架敌机，得5分
+  </script>
+</body>
+
+</html>

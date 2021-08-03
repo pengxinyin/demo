@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //创建学生类型，包括2部分
+    class Student{
+      //1. 构造函数: 规定所有学生必须有sname和sage两个属性
+      constructor(sname,sage){
+        this.sname=sname;
+        this.sage=sage;
+      }
+      //2. 原型对象: 规定所有学生都会做自我介绍!
+      intr(){
+        console.log(`I'm ${this.sname}, I'm ${this.sage}`)
+      }
+    }
+
+    //创建两个学生: 
+    var lilei=new Student("Li Lei",11);
+    var hmm=new Student("Han Meimei",12);
+    console.log(lilei);
+    console.log(hmm);
+    lilei.intr();
+    hmm.intr();
+  </script>
+</body>
+</html>
